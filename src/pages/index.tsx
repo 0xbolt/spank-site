@@ -25,7 +25,7 @@ export default function Home() {
 
         <div className={styles.flexCenter}>
         <Image src="/spanking_text.svg" width="700" height="100" alt="Text" />
-        <p className={styles.subHeading}>Let's spank the villians of crypto!</p>
+        <p className={styles.subHeading}>Let&apos;s spank the villians of crypto!</p>
         </div>
 
         <div className={styles.buttons}>
