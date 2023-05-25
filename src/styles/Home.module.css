@@ -58,8 +58,7 @@
 
 .logoImg {
   max-width: 50rem;
-  margin-bottom: -7rem;
-  margin-top: -8rem;
+
 }
 
 @media screen and (max-width: 1300px) {
@@ -67,10 +66,10 @@
     width: 20rem;
   }
 
-
   .logoImg {
-    max-width: 40rem;
-    margin-bottom: -4rem;
+    margin-top: -15rem;
+    margin-bottom: 0rem;
+    max-width: 25rem;
   }
 }
 
@@ -84,7 +83,8 @@
 
   .logoImg {
     margin-top: -15rem;
-    margin-bottom: -3rem;
+    margin-bottom: 0rem;
+    max-width: 20rem;
   }
 
   .buttons {
