@@ -1,0 +1,41 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6rem;
+  background-color: #F5855A;
+  min-height: 100vh;
+  overflow: hidden;
+  gap: 3rem;
+}
+
+
+.flexCenter {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-items: center;
+}
+
+.subHeading {
+  font-size: 4rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.buttons>a>button {
+  width: 30rem;
+  cursor: pointer;
+  height: 7.7rem;
+  font-family: 'Concert One', cursive;
+  border: none;
+  outline: none;
+  padding: 0rem 0 2rem 0em;
+  font-size: 4rem;
+  background: #EF4D90;
+  border-radius: 1.5rem;
+}
