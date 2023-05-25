@@ -17,12 +17,22 @@
   justify-items: center;
 }
 
+.textSvg {
+  align-items: start;
+  justify-content: start;
+  display: flex;
+  text-align: start;
+  width: 100%;
+}
+
 .subHeading {
   font-size: 4rem;
 }
 
 .buttons {
   display: flex;
+  flex-wrap: wrap;
+  padding: 2rem;
   gap: 2rem;
   margin-top: 3rem;
 }
@@ -38,4 +48,26 @@
   font-size: 4rem;
   background: #EF4D90;
   border-radius: 1.5rem;
+}
+
+@media screen and (max-width: 1300px) {
+  .buttons>a>button {
+    width: 20rem;
+  }
+
+
+  .logoImg {
+    max-width: 20rem;
+  }
+}
+
+@media screen and (max-width: 700px) {
+
+  .textSvg {
+    min-width: 30rem;
+  }
+  .subHeading {
+    font-size: 3.5rem;
+  }
+
 }

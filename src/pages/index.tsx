@@ -1,4 +1,5 @@
-import Head from 'next/head'
+/* eslint-disable @next/next/no-img-element */
+
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
@@ -12,20 +13,27 @@ export default function Home() {
       <Navbar />
       <main className={styles.main}>
 
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
+        <div className={styles.logoImg}>
+          <img
             src="/logo.png"
             alt="Next.js Logo"
-            width={200}
-            height={200}
-            priority
+            width="100%"
+            height="100%"
           />
         </div>
 
         <div className={styles.flexCenter}>
-        <Image src="/spanking_text.svg" width="700" height="100" alt="Text" />
-        <p className={styles.subHeading}>Let&apos;s spank the villians of crypto!</p>
+
+          <div className={styles.textSvg}>
+            <img
+              src="/spanking_text.svg"
+              width="100%"
+              height="100%"
+              alt="Text"
+              style={{ minWidth: "100%", minHeight: "100%" }}
+            />
+          </div>
+          <p className={styles.subHeading}>Let&apos;s spank the villians of crypto!</p>
         </div>
 
         <div className={styles.buttons}>
