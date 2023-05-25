@@ -32,6 +32,7 @@
 
 .buttons {
   display: flex;
+  color: white;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
@@ -43,6 +44,7 @@
 .buttons>a>button {
   width: 30rem;
   cursor: pointer;
+  color: white;
   height: 7.7rem;
   font-family: 'Concert One', cursive;
   border: none;
