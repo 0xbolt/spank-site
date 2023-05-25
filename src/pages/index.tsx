@@ -41,7 +41,7 @@ export default function Home() {
             <button>Twitter</button>
           </a>
 
-          <a href="https://twitter.com/spankcoin" target="_blank">
+          <a href="https://t.me/SpankCoinOfficial" target="_blank">
             <button>Telegram</button>
           </a>
         </div>
