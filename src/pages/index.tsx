@@ -33,7 +33,7 @@ export default function Home() {
               style={{ minWidth: "100%", minHeight: "100%" }}
             />
           </div>
-          <p className={styles.subHeading}>Let&apos;s spank the villians of crypto!</p>
+          <p className={styles.subHeading}>Let&apos;s spank the villains of crypto!</p>
         </div>
 
         <div className={styles.buttons}>
