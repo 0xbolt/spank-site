@@ -1,0 +1,34 @@
+.main {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttons {
+  display: flex;
+  color: white;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 20rem;
+}
+
+.buttons > button {
+  width: 30rem;
+  cursor: pointer;
+  color: white;
+  height: 7.7rem;
+  font-family: 'Concert One', cursive;
+  border: none;
+  outline: none;
+  font-size: 4rem;
+  background: #F5855A;
+  border-radius: 1.5rem;
+  padding-bottom: 1.5%;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background: #f86e38;
+  }
+}
