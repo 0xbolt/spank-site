@@ -1,4 +1,4 @@
-import Head from "next/head"
+import Head from "next/head";
 
 function DefaultHead() {
   return (
@@ -11,4 +11,4 @@ function DefaultHead() {
   );
 }
 
-export { DefaultHead }
+export { DefaultHead };

@@ -1,5 +1,5 @@
-import React, { useEffect, useState, ReactNode } from 'react';
-import styles from '@/styles/Splash.module.scss';
+import React, { useEffect, useState, ReactNode } from "react";
+import styles from "@/styles/Splash.module.scss";
 
 interface SplashScreenProps {
   children: ReactNode;
@@ -14,7 +14,8 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ children }) => {
   };
 
   useEffect(() => {
-    const videoElement: HTMLVideoElement | null = document.querySelector("#splash-video");
+    const videoElement: HTMLVideoElement | null =
+      document.querySelector("#splash-video");
     if (videoElement) {
       videoElement.onended = videoEndHandler;
     }
@@ -24,7 +25,10 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ children }) => {
     <div>
       <div
         className={styles.splashScreen}
-        style={{ opacity: playState ? 1 : 0, display: transitionDone ? "none" : "" }}
+        style={{
+          opacity: playState ? 1 : 0,
+          display: transitionDone ? "none" : "",
+        }}
         onTransitionEnd={() => setTransitionDone(true)}
       >
         <video className={styles.splashVideo} id="splash-video" autoPlay muted>
