@@ -1,5 +1,4 @@
 .main {
-  background-color: #F5855A;
   min-height: 100vh;
 }
 
@@ -53,12 +52,12 @@
   border: none;
   outline: none;
   font-size: 4rem;
-  background: #EF4D90;
+  background: #F5855A;
   border-radius: 1.5rem;
   padding-bottom: 1.5%;
   transition: all 0.3s ease-in-out;
   &:hover {
-    background: #f81574;
+    background: #f86e38;
   }
 }
 
