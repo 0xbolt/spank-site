@@ -1,4 +1,6 @@
+import 'fontsource-concert-one/latin.css';
 import "@/styles/globals.scss";
+
 import type { AppProps } from "next/app";
 import { DefaultHead } from "@/components/DefaultHead";
 import { Wallet } from "@/components/Wallet";
