@@ -6,16 +6,19 @@ import { ConnectWallet } from './Wallet';
 
 export const Navbar = () => {
   const { publicKey } = useWallet();
+
   return (
     <div className={styles.navbar}>
       <div className={styles.content}>
-        <img className={styles.logo} src="/logo.png" alt="Logo" />
+        <Link href="/">
+          <img className={styles.logo} src="/logo.png" alt="Logo" />
+        </Link>
         <div className={styles.links}>
           <Link href="/">Home</Link>
           <Link href="/airdrop">Airdrop</Link>
         </div>
         <div className={styles.connectBtnDiv}>
-          <ConnectWallet noFullSize={true}>
+          <ConnectWallet noFullSize={true} noToast={true}>
             {publicKey ? (
               <p className={styles.connectedBtn}>Wallet Connected</p>
             ) : (

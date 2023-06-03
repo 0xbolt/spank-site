@@ -1,18 +1,46 @@
-.main {
-  // min-height: 100vh;
-}
-
 .content {
   height: 100%;
   width: 100%;
+  padding: 0rem 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.comingSoon {
+.message {
   color: white;
   font-size: 7rem;
   margin-top: 40rem;
+  max-width: 150rem;
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  color: white;
+  flex-wrap: wrap;
+  padding: 0rem 4rem;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 5rem;
+}
+
+.buttons > div > button, .buttons > button {
+  min-width: 35rem;
+  cursor: pointer;
+  color: white;
+  height: 7.7rem;
+  font-family: 'Concert One', cursive;
+  border: none;
+  outline: none;
+  font-size: 4rem;
+  background: #F5855A;
+  border-radius: 1.5rem;
+  padding-bottom: 0.5%;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background: #f86e38;
+  }
 }
