@@ -37,17 +37,17 @@
           "isSigner": false
         },
         {
+          "name": "trackerAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
           "name": "systemProgram",
           "isMut": false,
           "isSigner": false
         }
       ],
-      "args": [
-        {
-          "name": "lotteryId",
-          "type": "u16"
-        }
-      ]
+      "args": []
     },
     {
       "name": "createUser",
@@ -59,7 +59,7 @@
         },
         {
           "name": "trackerAccount",
-          "isMut": false,
+          "isMut": true,
           "isSigner": false
         },
         {
@@ -304,6 +304,10 @@
           {
             "name": "totalUserCount",
             "type": "u32"
+          },
+          {
+            "name": "totalLotteryCount",
+            "type": "u16"
           },
           {
             "name": "totalDeposits",

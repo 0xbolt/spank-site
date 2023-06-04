@@ -24,6 +24,27 @@ const provider = (wallet: AnchorWallet) =>
 const getProgram = (wallet: AnchorWallet) =>
   new anchor.Program(idl as anchor.Idl, DEVNET_PROGRAM_ID, provider(wallet));
 
+async function createTracker(wallet: AnchorWallet) {
+  const program = getProgram(wallet);
+  const [trackerAccount] = PublicKey.findProgramAddressSync(
+    [Buffer.from("global_tracker")],
+    program.programId
+  );
+  const tx = await program.methods.createTracker().accounts({
+    authority: wallet.publicKey,
+    trackerAccount,
+    systemProgram: SystemProgram.programId,
+  });
+  const sig = tx.rpc({ skipPreflight: true });
+  toast.promise(sig, {
+    loading: "Creating tracker...",
+    success: "Tracker created!",
+    error: "Error creating tracker",
+  });
+  const txid = await sig;
+  console.log("Create Tracker Sig: ", txid);
+}
+
 async function createUser(wallet: AnchorWallet) {
   const program = getProgram(wallet);
   const [user_account] = PublicKey.findProgramAddressSync(
@@ -34,15 +55,14 @@ async function createUser(wallet: AnchorWallet) {
     [Buffer.from("global_tracker")],
     program.programId
   );
-  const tx = await program.methods
-    .createUser()
-    .accounts({
-      trackerAccount,
-      userAccount: user_account,
-      authority: wallet.publicKey,
-      systemProgram: SystemProgram.programId,
-    });
-  const sig = tx.rpc();
+  console.log("Tracker Account: ", trackerAccount.toBase58());
+  const tx = await program.methods.createUser().accounts({
+    trackerAccount,
+    userAccount: user_account,
+    authority: wallet.publicKey,
+    systemProgram: SystemProgram.programId,
+  });
+  const sig = tx.rpc({ skipPreflight: true });
   toast.promise(sig, {
     loading: "Creating user...",
     success: "User created!",
@@ -52,4 +72,30 @@ async function createUser(wallet: AnchorWallet) {
   console.log("Create User Sig: ", txid);
 }
 
-export { createUser };
+async function createLottery(wallet: AnchorWallet) {
+  const program = getProgram(wallet);
+  const [trackerAccount] = PublicKey.findProgramAddressSync(
+    [Buffer.from("global_tracker")],
+    program.programId
+  );
+  const [lottery] = PublicKey.findProgramAddressSync(
+    [Buffer.from("lottery")],
+    program.programId
+  );
+  const tx = await program.methods.createLottery().accounts({
+    lottery,
+    trackerAccount,
+    authority: wallet.publicKey,
+    systemProgram: SystemProgram.programId,
+  });
+  const sig = tx.rpc();
+  toast.promise(sig, {
+    loading: "Creating lottery...",
+    success: "Lottery created!",
+    error: "Error creating lottery",
+  });
+  const txid = await sig;
+  console.log("Create Lottery Sig: ", txid);
+}
+
+export { createUser, createTracker, createLottery };
