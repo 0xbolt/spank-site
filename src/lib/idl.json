@@ -47,7 +47,12 @@
           "isSigner": false
         }
       ],
-      "args": []
+      "args": [
+        {
+          "name": "id",
+          "type": "u16"
+        }
+      ]
     },
     {
       "name": "createUser",
@@ -90,12 +95,12 @@
         },
         {
           "name": "userAccount",
-          "isMut": false,
+          "isMut": true,
           "isSigner": false
         },
         {
           "name": "trackerAccount",
-          "isMut": false,
+          "isMut": true,
           "isSigner": false
         },
         {
@@ -181,7 +186,7 @@
         },
         {
           "name": "userAccount",
-          "isMut": false,
+          "isMut": true,
           "isSigner": false
         },
         {
