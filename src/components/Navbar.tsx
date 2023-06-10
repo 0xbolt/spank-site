@@ -16,6 +16,7 @@ export const Navbar = () => {
         <div className={styles.links}>
           <Link href="/">Home</Link>
           <Link href="/airdrop">Airdrop</Link>
+          <Link href="/about">About</Link>
         </div>
         <div className={styles.connectBtnDiv}>
           <ConnectWallet noFullSize={true} noToast={true}>
