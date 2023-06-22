@@ -60,7 +60,7 @@ async function getUserAccount(wallet: AnchorWallet) {
 
 async function getLotteryAccount(wallet: AnchorWallet) {
   const program = getProgram(wallet);
-  const lotteryId = await getLotteryId(wallet);
+  const lotteryId = await getLotteryId(wallet) + 1;
   const [lottery] = PublicKey.findProgramAddressSync(
     [Buffer.from("lottery"), new BN(lotteryId).toArrayLike(Buffer, "le", 2)],
     program.programId

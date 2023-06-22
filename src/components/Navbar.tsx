@@ -15,8 +15,10 @@ export const Navbar = () => {
         </Link>
         <div className={styles.links}>
           <Link href="/">Home</Link>
-          <Link href="/airdrop">Airdrop</Link>
           <Link href="/about">About</Link>
+          <Link href="/winners">Winners</Link>
+          <Link href="/airdrop">Airdrop</Link>
+          <a href="https://twitter.com/spankcoin" target="_blank" rel="noopener noreferrer">Twitter</a>
         </div>
         <div className={styles.connectBtnDiv}>
           <ConnectWallet noFullSize={true} noToast={true}>
