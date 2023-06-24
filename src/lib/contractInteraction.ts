@@ -37,7 +37,7 @@ async function getLotteryId(wallet: AnchorWallet) {
     trackerAccount
   );
   const lotteryId = trackerAccountData.totalLotteryCount;
-  return lotteryId - 1;
+  return lotteryId;
 }
 
 async function getTrackerAccount(wallet: AnchorWallet) {
@@ -49,6 +49,20 @@ async function getTrackerAccount(wallet: AnchorWallet) {
   return trackerAccount;
 }
 
+async function getTrackerAccountData() {
+  const dummyWallet: AnchorWallet = {
+    publicKey: TOKEN_MINT_ADDRESS_DEVNET,
+    signAllTransactions: async () => [],
+    signTransaction: async () => "" as any
+  }
+  const program = getProgram(dummyWallet);
+  const trackerAccount = await getTrackerAccount(dummyWallet);
+  const trackerAccountData = await program.account.trackerAccount.fetch(
+    trackerAccount
+  );
+  return trackerAccountData;
+}
+
 async function getUserAccount(wallet: AnchorWallet) {
   const program = getProgram(wallet);
   const [user_account] = PublicKey.findProgramAddressSync(
@@ -58,9 +72,9 @@ async function getUserAccount(wallet: AnchorWallet) {
   return user_account;
 }
 
-async function getLotteryAccount(wallet: AnchorWallet) {
+async function getLotteryAccount(wallet: AnchorWallet, decrement = false) {
   const program = getProgram(wallet);
-  const lotteryId = await getLotteryId(wallet) + 1;
+  const lotteryId = await getLotteryId(wallet) - (decrement ? 1 : 0);
   const [lottery] = PublicKey.findProgramAddressSync(
     [Buffer.from("lottery"), new BN(lotteryId).toArrayLike(Buffer, "le", 2)],
     program.programId
@@ -86,9 +100,11 @@ async function createTracker(wallet: AnchorWallet) {
   console.log("Create Tracker Sig: ", txid);
 }
 
-async function createUser(wallet: AnchorWallet) {
+async function getOrCreateUser(wallet: AnchorWallet) {
   const program = getProgram(wallet);
   const userAccount = await getUserAccount(wallet);
+  const userAccountData = await program.account.userAccount.fetch(userAccount);
+  if (userAccountData) return userAccountData;
   const trackerAccount = await getTrackerAccount(wallet);
   const tx = await program.methods.createUser().accounts({
     trackerAccount,
@@ -131,10 +147,10 @@ async function createLottery(wallet: AnchorWallet) {
 
 async function deposit(wallet: AnchorWallet, amount: number) {
   const program = getProgram(wallet);
-  const lotteryId = await getLotteryId(wallet);
+  const lotteryId = await getLotteryId(wallet) - 1;
   const trackerAccount = await getTrackerAccount(wallet);
   const userAccount = await getUserAccount(wallet);
-  const lotteryAccount = await getLotteryAccount(wallet);
+  const lotteryAccount = await getLotteryAccount(wallet, true);
 
   const from_ata = spl.getAssociatedTokenAddressSync(
     new anchor.web3.PublicKey(TOKEN_MINT_ADDRESS_DEVNET),
@@ -174,8 +190,8 @@ async function deposit(wallet: AnchorWallet, amount: number) {
 
 async function selectWinner(wallet: AnchorWallet) {
   const program = getProgram(wallet);
-  const lotteryId = await getLotteryId(wallet);
-  const lotteryAccount = await getLotteryAccount(wallet);
+  const lotteryId = await getLotteryId(wallet) - 1;
+  const lotteryAccount = await getLotteryAccount(wallet, true);
   const sig = await program.methods
     .selectWinner(new anchor.BN(lotteryId))
     .accounts({
@@ -193,4 +209,4 @@ async function selectWinner(wallet: AnchorWallet) {
   console.log("Select Winner Sig: ", txid);
 }
 
-export { createUser, createTracker, createLottery, deposit, selectWinner };
+export { getOrCreateUser, createTracker, createLottery, deposit, selectWinner, getTrackerAccountData };

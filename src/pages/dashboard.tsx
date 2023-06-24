@@ -2,7 +2,7 @@ import styles from '@/styles/Dashboard.module.scss';
 
 import { Navbar } from "@/components/Navbar";
 import { useAnchorWallet } from '@solana/wallet-adapter-react';
-import { createLottery, createTracker, createUser, deposit, selectWinner } from '@/lib/contractInteraction';
+import { createLottery, createTracker, getOrCreateUser, deposit, selectWinner } from '@/lib/contractInteraction';
 
 export default function Dashboard() {
   const anchorWallet = useAnchorWallet();
@@ -24,7 +24,7 @@ export default function Dashboard() {
 
           <button onClick={() => {
             if (!anchorWallet) return;
-            createUser(anchorWallet);
+            getOrCreateUser(anchorWallet);
           }}>Create User</button>
 
           <button onClick={() => {

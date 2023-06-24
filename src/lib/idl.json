@@ -355,6 +355,11 @@
       "code": 6004,
       "name": "NotAdmin",
       "msg": "You are not an admin"
+    },
+    {
+      "code": 6005,
+      "name": "InvalidID",
+      "msg": "Invalid ID Sequence"
     }
   ]
 }

@@ -5,6 +5,7 @@ export default function Winners() {
   return (
     <div>
       <Navbar />
+      <h1 className={styles.comingSoon}>{"Coming Soon!"}</h1>
     </div>
   );
 }
